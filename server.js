@@ -10,6 +10,7 @@ const MySQLStore = require('express-mysql-session')(session);
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
 /* holy moly */
+/* sasabog */
 
 dotenv.config({path: './.env'});
 const publicDirectory = path.join(__dirname, './public');
