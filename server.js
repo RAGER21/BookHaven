@@ -7,6 +7,9 @@ const cookie = require('cookie-parser');
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+
+
 dotenv.config({path: './.env'});
 const publicDirectory = path.join(__dirname, './public');
 
@@ -59,7 +62,7 @@ app.use( session({
 
 
 
-  
+
 app.listen(process.env.PORT || 3306, () => {
   console.log("Connected at port 3306")
 });
