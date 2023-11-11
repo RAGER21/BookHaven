@@ -1,13 +1,9 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const mysql = require('mysql');
 const dotenv = require('dotenv');
-const cookie = require('cookie-parser');
-const session = require('express-session');
-const MySQLStore = require('express-mysql-session')(session);
 
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { createClient } from '@supabase/supabase-js'
 
 
 dotenv.config({path: './.env'});
@@ -22,42 +18,12 @@ app.use('/auth', require('./routes/auth'))
 app.set('view engine', 'hbs');
 app.use(cookie());
 
-const db = mysql.createConnection({
-  host: process.env.DATABASE_HOST,
-  user: process.env.DATABASE_USER,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE,
-})
 
-db.connect( (error) =>{
-  if(error){
-    console.log(error)
-  }else{
-    console.log("Mysql Connected....")
-  }
-})
+import { createClient } from '@supabase/supabase-js'
 
-var sessionStore = new MySQLStore({
-  expiration: 10800000,
-  createDatabaseTable: true,
-  schema: {
-    tableName: 'sessiontbl',
-    columnNames: {
-    session_id: 'session_id',
-    expires: 'expires',
-    data: 'data'
-    }
-  }
-}, sessionStore)
-
-app.use( session({
-  key: 'keyin',
-  secret: 'my secret',
-  store: sessionStore,
-  resave: false,
-  saveUninitialized: true
-  }))
-
+const supabaseUrl = process.env.SUPABASE_PROJECT_KEY
+const supabaseKey = process.env.SUPABASE_CLIENT_KEY
+const supabase = createClient(supabaseUrl, supabaseKey)
 
 
 
