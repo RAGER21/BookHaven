@@ -11,27 +11,39 @@
 
         <div class="card-header">Register Form</div>
 
-        <form action="/auth/register" method="POST"> 
-                <div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping">Email</span>
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" name="email">
-                </div>
+            <form action="/auth/register" method="POST">
+            
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping">First Name</span>
+                        <input type="text" class="form-control" aria-label="Username" aria-describedby="addon-wrapping" name="fname">
+                    </div>
+
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping">Last Name</span>
+                        <input type="text" class="form-control" aria-label="Username" aria-describedby="addon-wrapping" name="lname">
+                    </div>
 
 
-                <div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping">Password</span>
-                    <input type="text" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="addon-wrapping" name="password">
-                </div>
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping">Email</span>
+                        <input type="text" class="form-control" aria-label="Username" aria-describedby="addon-wrapping" name="email">
+                    </div>
 
 
-                <div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping">Password Confirm</span>
-                    <input type="text" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="addon-wrapping" name="passwordConfirm">
-                </div>
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping">Password</span>
+                        <input type="text" class="form-control" aria-label="Username" aria-describedby="addon-wrapping" name="password">
+                    </div>
 
-                <button type="submit">Register</button>
-                <a href="/">CANCEL</a>
-        </form>
+
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping">Password Confirm</span>
+                        <input type="text" class="form-control" aria-label="Username" aria-describedby="addon-wrapping" name="passwordConfirm">
+                    </div>
+
+                    <button type="submit">Register</button>
+                    <a href="/">CANCEL</a>
+            </form>
         {{#if messege}}
         <h4 class="alert alert-danger mt-4"> {{messege}}</h4>
         {{/if}}
