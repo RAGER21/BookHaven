@@ -5,18 +5,31 @@ import {supabase} from '../server.mjs'
 export const register = async (req, res) =>{
     const{ fname, lname, email, password, passwordConfirm} = req.body;
  try{
+
+    if(checkEmail(email) == true){
+        return res.render('register', {
+            messege: "email already exist"
+        })
+    }
     
-    validation(email,password,passwordConfirm);
+
+    if(checkPassword(password, passwordConfirm) == true){
+        return res.render('register',{
+            messege: 'Password do not match'
+        })
+    }
     const salt= await bcrypt.genSalt();
     let hashedPassword = await bcrypt.hash(password, salt)
-    console.log(hashedPassword)
     insertData(fname, lname, email, hashedPassword);
 
     res.render('user');
 
 
  }catch(e){
-    console.log(e);
+    if(e){
+        console.log(e);
+    }
+    
  }
 }
 
@@ -53,22 +66,29 @@ export const login =  (req, res) =>{
     
 }
 
-async function validation(email,password,passwordConfirm){
 
+
+async function checkEmail(email){
     const {data, error} =await supabase.from('users').select().eq('email',email);
     if(error){
         console.log(error)
     }
-    if(data > 0){
-        return res.render('register', {
-            messege: 'Email already exist'
-        })
-    }else if(password !== passwordConfirm){
-        return res.render('register',{
-            messege: 'Password do not match'
-        })
+    if(data){
+        console.log('email already exist')
+        return true
     }
 
+
+}
+
+
+async function checkPassword(password,passwordConfirm){
+    
+    if(password !== passwordConfirm){
+        console.log('password does not match')
+
+        return true;
+    }
 }
 
 async function insertData(fname, lname, email, hashedPassword){
@@ -78,7 +98,10 @@ async function insertData(fname, lname, email, hashedPassword){
         { first_name:fname, last_name: lname, email: email, password:hashedPassword },
         ])
         .select()
-        
-        console.log(error);
+        if(error){
+
+            console.log(error);
+
+        }
 }
 
