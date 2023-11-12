@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="#">
+    <title>Homepage</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+            background-color: #292929;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+                  /*Navigation bar*/
+        nav{
+            background: #000000;
+            padding: 10px 40px 10px 10px;
+            border: 1px solid #000000;
+            border-left: none;
+            border-right: none;
+        }
+        nav  ul{
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+        nav ul li.logo{
+            flex: 1;
+            font-size: 40px;
+            font-weight: 700;
+        }
+        nav ul div.items{
+            padding: 0 20px;                
+            display: inline-flex;
+            position: relative;
+        }
+        
+        nav ul div.items a{
+            color: #ffa31a;
+            padding: 20px;
+            text-decoration: none;
+            margin: 0 2px;
+            font-size: 18px;
+            transition: all ease .4s;
+        }
+
+        nav ul div.items a:hover{
+            color: #ffffff;
+
+        }
+
+        nav ul .search-bar input {
+            height: 28px;
+            width: 200px;
+            border: none;
+            outline: 1px solid #ffa31a;
+            padding: 0 10px;
+            color: #ffffff;
+            background-color: #3d3d3d;
+            font-size: 16px;
+            border-radius: 5px 5px 5px 5px;
+        }
+        p{
+            color: #ffffff;
+        }
+        p:hover{
+            cursor: pointer;
+        }
+        p a{
+            color:#fc9802;
+            text-decoration: none;
+        }
+
+                    /*Pagination*/
+        .row-pagination {
+            position: fixed;
+            top: 26%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 50%;
+        }
+
+        .btn{
+            padding: 18px 16px;
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            border: 1.5px solid #ffa31a;
+            text-align: center;
+            cursor: pointer;
+            margin: 0 2px;
+            transition-duration: 0.4s;
+        }
+        .btn:hover{
+            background-color: #4a4a4a; 
+            border: 1.5px solid #ffa31a;
+            color: #ffa31a;
+        }
+        .btn:active{
+            background-color: #fb0000; 
+        }
+                    /*Table*/
+        table{
+            background-color: #ffffff;
+        }
+        table.TF{
+
+        }
+
+    </style>
+
+</head>
+<body>
+    <nav> 
+        <ul>
+            <li class="logo">Book<span style="color:rgb(255, 163, 26)">Haven</span></li>
+            <div class="items">
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Books</a></li>
+                <li><a href="#">Contacts</a></li>
+            </div>
+            <p>Anime               <a href="#">filter</a></p>                          
+            <li class="search-bar">
+                <input type="search" placeholder="Search">
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container-p">
+        <div class="row-pagination">
+            <button class="btn" value="" onclick="filter(event);">All</button>
+            <button class="btn" value="A" onclick="filter(event);">A</button>
+            <button class="btn" value="B" onclick="filter(event);">B</button>
+            <button class="btn" value="C" onclick="filter(event);">C</button>
+            <button class="btn" value="D" onclick="filter(event);">D</button>
+            <button class="btn" value="E" onclick="filter(event);">E</button>
+            <button class="btn" value="F" onclick="filter(event);">F</button>
+            <button class="btn" value="G" onclick="filter(event);">G</button>
+            <button class="btn" value="H" onclick="filter(event);">H</button>
+            <button class="btn" value="I" onclick="filter(event);">I</button>
+            <button class="btn" value="J" onclick="filter(event);">J</button>
+            <button class="btn" value="K" onclick="filter(event);">K</button>
+            <button class="btn" value="L" onclick="filter(event);">L</button>
+            <button class="btn" value="M" onclick="filter(event);">M</button>
+            <button class="btn" value="N" onclick="filter(event);">N</button>
+            <button class="btn" value="O" onclick="filter(event);">O</button>
+            <button class="btn" value="P" onclick="filter(event);">P</button>
+            <button class="btn" value="Q" onclick="filter(event);">Q</button>
+            <button class="btn" value="R" onclick="filter(event);">R</button>
+            <button class="btn" value="S" onclick="filter(event);">S</button>
+            <button class="btn" value="T" onclick="filter(event);">T</button>
+            <button class="btn" value="U" onclick="filter(event);">U</button>
+            <button class="btn" value="V" onclick="filter(event);">V</button>
+            <button class="btn" value="W" onclick="filter(event);">W</button>
+            <button class="btn" value="X" onclick="filter(event);">X</button>
+            <button class="btn" value="Y" onclick="filter(event);">Y</button>
+            <button class="btn" value="Z" onclick="filter(event);">Z</button>
+        </div>
+    </div>
+
+
+    <div class="container-list">
+        <table id="books" class="TF" style="width: 925px; table-layout: fixed;">
+            <col style="width: 75px;">
+            <col style="width: 350px;">
+            <col style="width: 350px;">
+            <col style="width: 75px;">
+            <col style="width: 75px;">
+        <caption>
+            <div class="inf">
+
+            </div>
+        </caption>
+
+        </table>
+
+    </div>
+
+
+    
+
+
+ 
